@@ -36,6 +36,7 @@ import gov.nist.isg.mist.stitching.lib.imagetile.Stitching;
 import gov.nist.isg.mist.stitching.lib.log.Log;
 import gov.nist.isg.mist.stitching.lib.log.Log.LogType;
 import gov.nist.isg.mist.stitching.lib.tilegrid.TileGrid;
+import gov.nist.isg.mist.stitching.lib32.imagetile.Stitching32;
 
 import javax.swing.*;
 
@@ -83,6 +84,7 @@ public class GlobalOptimization<T> implements Runnable {
   @Override
   public void run() {
     Stitching.USE_HILLCLIMBING = this.params.getAdvancedParams().isUseHillClimbing();
+    Stitching32.USE_HILLCLIMBING = this.params.getAdvancedParams().isUseHillClimbing();
 
     OptimizationUtils.backupTranslations(this.grid);
 

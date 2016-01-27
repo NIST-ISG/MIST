@@ -1333,13 +1333,13 @@ public class Stitching32 {
    * @return the cross correlation
    */
   public static float crossCorrelation(Array2DView a1, Array2DView a2) {
-    float sum_prod = 0;
-    float sum1 = 0;
-    float sum2 = 0;
-    float norm1 = 0;
-    float norm2 = 0;
-    float a1_ij;
-    float a2_ij;
+    double sum_prod = 0;
+    double sum1 = 0;
+    double sum2 = 0;
+    double norm1 = 0;
+    double norm2 = 0;
+    double a1_ij;
+    double a2_ij;
 
     int n_rows = a1.getViewHeight();
     int n_cols = a2.getViewWidth();
@@ -1357,10 +1357,10 @@ public class Stitching32 {
         norm2 += a2_ij * a2_ij;
       }
 
-    float numer = sum_prod - sum1 * sum2 / sz;
-    float denom = (float) Math.sqrt((norm1 - sum1 * sum1 / sz) * (norm2 - sum2 * sum2 / sz));
+    double numer = sum_prod - sum1 * sum2 / sz;
+    double denom = Math.sqrt((norm1 - sum1 * sum1 / sz) * (norm2 - sum2 * sum2 / sz));
 
-    float val = numer / denom;
+    float val = (float)(numer / denom);
 
     if (Float.isNaN(val) || Float.isInfinite(val)) {
       val = -1.0f;
